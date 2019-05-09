@@ -1,0 +1,13 @@
+.card {
+	display: flex;
+	overflow-x: auto;
+}
+
+.card::-webkit-scrollbar {
+  display: none;
+}
+
+.card--content {
+	min-width: 200px;
+	margin: 5px;
+}

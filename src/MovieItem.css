@@ -1,0 +1,11 @@
+.card {
+	border: none;
+	margin: 1vw;
+	padding: 1.5vw;
+}
+
+.card-footer {
+	background: none;
+	border: none;
+	font-size: calc(0.7em + 0.7vw);
+}
