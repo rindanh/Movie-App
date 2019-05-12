@@ -58,7 +58,7 @@ class MovieDetail extends Component{
 		return(
 			<div className="row">
 				<div className="col-sm-4">
-					<img src={image} />
+					<img src={image} alt={this.state.movie_detail.title}/>
 				</div>
 				<div className="col-sm-8">
 					<h2>{this.state.movie_detail.title}</h2>

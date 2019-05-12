@@ -8,7 +8,7 @@ function NowPlayingItem(props) {
 	return(
 		<div className="card align-items-center">
 			<Link to="movie-detail">
-				<img className="card-img-top" src={image} />
+				<img className="card-img-top" src={image} alt={props.movie.title}/>
 			</Link>
 			<div className="card-footer text-center">
 				<Link to="movie-detail">{props.movie.title}</Link>

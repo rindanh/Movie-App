@@ -5,9 +5,9 @@ import MovieDetail from './MovieDetail'
 import NowPlaying from './NowPlaying'
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   render() {
     return (
