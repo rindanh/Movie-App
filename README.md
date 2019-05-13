@@ -1,3 +1,10 @@
+# Movie App
+
+An application to see what movies are playing on the cinema.
+
+API is from [The Movie DB](https://www.themoviedb.org/)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
