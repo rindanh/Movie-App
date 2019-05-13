@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieItem from './MovieItem'
+import NowPlayingItem from './NowPlayingItem'
 
 class NowPlaying extends Component {
   constructor(props){
@@ -7,6 +7,11 @@ class NowPlaying extends Component {
     this.state = {
       now_playing: [],
     }
+    this.handleMovieSelected = this.handleMovieSelected.bind(this)
+  }
+
+  handleMovieSelected(data) {
+    this.props.movie_selected(data);
   }
 
   componentDidMount(){
@@ -25,7 +30,7 @@ class NowPlaying extends Component {
 
   render() {
     const movies = this.state.now_playing.map((movie) =>
-      <MovieItem movie={movie} />
+      <NowPlayingItem movie={movie} onClick = {() => this.handleMovieSelected(movie.id)}/>
     )
 
     return (

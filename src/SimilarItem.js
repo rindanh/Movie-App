@@ -1,13 +1,12 @@
 import React from 'react';
-import './MovieItem.css';
 import MovieItem from './MovieItem'
 
-function NowPlayingItem(props){
+function SimilarItem(props){
 	return(
-		<div className="col-sm-3">
+		<div className="card--content">
 			<MovieItem movie={props.movie} onClick={props.onClick}/>
 		</div>
 	);
 }
 
-export default NowPlayingItem;
+export default SimilarItem;

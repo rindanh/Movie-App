@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MovieDetail.css';
-// import MovieItem from './MovieItem'
+import MovieItem from './MovieItem'
 
 class MovieDetail extends Component{
 	constructor(props){
@@ -14,7 +14,10 @@ class MovieDetail extends Component{
 
 	componentDidMount(){
       const api_key = '3e86daa2ef4d6ebc9f48ebb42c59bda6';
-      let api = 'https://api.themoviedb.org/3/movie/' + this.props.id + '?api_key=' + api_key;
+      let loc = window.location.pathname;
+      let loc_splitted = loc.split("/").join("")
+      let id = this.props.id || loc_splitted
+      let api = 'https://api.themoviedb.org/3/movie/' + id + '?api_key=' + api_key;
       let urlFetch = fetch(api)
       urlFetch.then(res =>{
         if(res.status === 200){
@@ -26,7 +29,7 @@ class MovieDetail extends Component{
           movie_genres: resJson.genres,
         })
       })
-      api = 'https://api.themoviedb.org/3/movie/' + this.props.id + '/similar?api_key=' + api_key;
+      api = 'https://api.themoviedb.org/3/movie/' + id + '/similar?api_key=' + api_key;
       urlFetch = fetch(api)
       urlFetch.then(res =>{
         if(res.status === 200){
@@ -54,23 +57,37 @@ class MovieDetail extends Component{
 		let date = new Date(this.state.movie_detail.release_date)
 		let year = date.getYear() + 1900;
 
+		const recommendations = this.state.movie_recommendations.map((recommendation,key) =>
+				
+				<div className="card--content">			
+					<MovieItem movie={recommendation} />
+				</div>
+			
+		)
 
 		return(
-			<div className="row">
-				<div className="col-sm-4">
-					<img src={image} alt={this.state.movie_detail.title}/>
-				</div>
-				<div className="col-sm-8">
-					<h2>{this.state.movie_detail.title}</h2>
-					<h5><em>{this.state.movie_detail.tagline}</em></h5>
-					<div>Release year: {year}</div>
-					<div>Genre: {genres}</div>
-					<br/><br/>
-					<h4>Overview</h4>
-					<div> {this.state.movie_detail.overview} </div>
+			<div className="container">
+				<div className="row">
+					<div className="col-sm-4">
+						<img src={image} alt={this.state.movie_detail.title}/>
+					</div>
+					<div className="col-sm-8">
+						<h2>{this.state.movie_detail.title}</h2>
+						<h5><em>{this.state.movie_detail.tagline}</em></h5>
+						<div>Release year: {year}</div>
+						<div>Genre: {genres}</div>
+						<br/><br/>
+						<h4>Overview</h4>
+						<div> {this.state.movie_detail.overview} </div>
+					</div>
 				</div>
 				<br/>
 				<h3><br/>Recommendations</h3>
+				<div className="row">
+					<section className="card">
+						{recommendations}
+					</section>
+				</div>
 			</div>
 		);
 	}
